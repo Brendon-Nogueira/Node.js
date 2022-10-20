@@ -5,8 +5,8 @@ const create = (req, res) => {
     res.status(201).send('Customer created successfully!')
 }
 
-const getAll = (req, res) => {
-    res.send(service.getAll())
+const getAll = async (req, res) => {
+    res.send( await service.getAll())
 }
 
 const getCustomerById = (req, res) => {
