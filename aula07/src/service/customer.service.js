@@ -1,7 +1,8 @@
 const { customer } = require('../model/index')
 
-const create = customer => {
+const create =  async data => {
 
+    await customer.create(data)
 }
 
 const getAll = async () => {
@@ -10,16 +11,28 @@ const getAll = async () => {
     
 }
 
-const getCustomerById = customerId => {
-
+const getCustomerById =  async customerId => {
+    return await customer.findAll({
+        where: {
+            id : customerId
+        }
+    })
 }
 
-const update = (customerId, customer) => {
-
+const update = async (customerId, data) => {
+    return await customer.update(data, {
+        where: {
+            id: customerId
+        }
+    })
 }
 
-const remove = customerId => {
-
+const remove = async customerId => {
+    return await customer.destroy({
+        where:{
+            id: customerId
+        }
+    })
 }
 
 module.exports = {
